@@ -78,7 +78,9 @@ function valid($result){
 	$data = $data['suggestions'];
 	
 	for ($i = 0; $i < count($data); $i++){
-		$text = "('".$data[$i]['code']."','".$data[$i]['value']."'),";
+		$city_name = $data[$i]['value'];
+		$city_name = str_replace("'","\'",$city_name);
+		$text = "('".$data[$i]['code']."','".$city_name."'),";
 		file_put_contents($file, $text.PHP_EOL , FILE_APPEND | LOCK_EX);
 	}
 }
